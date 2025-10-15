@@ -115,8 +115,12 @@ fn[T] KDTree::split_by_midvalue(
 }
 
 ///|
-test "split by midvalue" {
-  let id = x => x
+fn[T] id(x : T) -> T {
+  return x
+}
+
+///|
+test "split by midvalue 1" {
   let arr = [1, 2, 3, 4, 5]
   let (left, mid, right) = KDTree::split_by_midvalue(
     arr,
@@ -127,6 +131,10 @@ test "split by midvalue" {
   inspect(arr[left.0:left.1], content="[1, 2]")
   inspect(mid, content="3")
   inspect(arr[right.0:right.1], content="[4, 5]")
+}
+
+///|
+test "split by midvalue 2" {
   let arr2 = [1]
   let (left2, mid2, right2) = KDTree::split_by_midvalue(
     arr2,
@@ -137,6 +145,10 @@ test "split by midvalue" {
   inspect(arr2[left2.0:left2.1], content="[]")
   inspect(mid2, content="1")
   inspect(arr2[right2.0:right2.1], content="[]")
+}
+
+///|
+test "split by midvalue 3" {
   let arr3 = [1, 2, 2, 3, 4]
   let (left3, mid3, right3) = KDTree::split_by_midvalue(
     arr3,
@@ -147,6 +159,10 @@ test "split by midvalue" {
   inspect(arr3[left3.0:left3.1], content="[1, 2]")
   inspect(mid3, content="2")
   inspect(arr3[right3.0:right3.1], content="[3, 4]")
+}
+
+///|
+test "split by midvalue 4" {
   let arr4 = [1, 2, 3, 3, 4]
   let (left4, mid4, right4) = KDTree::split_by_midvalue(
     arr4,
@@ -157,6 +173,10 @@ test "split by midvalue" {
   inspect(arr4[left4.0:left4.1], content="[1, 2]")
   inspect(mid4, content="3")
   inspect(arr4[right4.0:right4.1], content="[3, 4]")
+}
+
+///|
+test "split by midvalue 5" {
   let arr5 = [1, 2, 3, 4, 5, 6]
   let (left5, mid5, right5) = KDTree::split_by_midvalue(
     arr5,
