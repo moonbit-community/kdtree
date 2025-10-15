@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "myfreess/kdtree"
+
+import(
+  "moonbitlang/core/immut/array"
+)
+
+// Values
+
+// Errors
+
+// Types and methods
+pub struct KDTree {
+  point : @array.T[Int]
+  partition_axis : Int
+  left : KDTree?
+  right : KDTree?
+}
+fn KDTree::from(Array[@array.T[Int]], Int) -> Self
+fn KDTree::is_leaf(Self) -> Bool
+fn KDTree::singleton(@array.T[Int]) -> Self
+
+// Type aliases
+
+// Traits
+
