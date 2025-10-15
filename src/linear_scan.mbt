@@ -5,8 +5,11 @@ priv struct LinearScanKNN[Point] {
 }
 
 ///|
-fn[T] LinearScanKNN::new(dimension : Int) -> LinearScanKNN[T] {
-  LinearScanKNN::{ dimension, points: [] }
+fn[T] LinearScanKNN::new(
+  dimension : Int,
+  points? : Array[T] = [],
+) -> LinearScanKNN[T] {
+  LinearScanKNN::{ dimension, points }
 }
 
 ///|
@@ -72,4 +75,46 @@ fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
     result[length - 1 - i] = temp
   }
   return result
+}
+
+///|
+test {
+  let points = [
+    (1, 0),
+    (0, 1),
+    (-1, 0),
+    (0, -1),
+    (1, 1),
+    (-1, -2),
+    (2, 2),
+    (-2, -3),
+  ]
+  let knn = LinearScanKNN::new(2, points~)
+  @json.inspect(knn.search_by((0, 0), 4), content=[
+    [-1, 0],
+    [0, -1],
+    [0, 1],
+    [1, 0],
+  ])
+  @json.inspect(knn.search_by((0, 0), 5), content=[
+    [-1, 0],
+    [0, -1],
+    [0, 1],
+    [1, 0],
+    [1, 1],
+  ])
+  @json.inspect(knn.search_by((0, 0), 6), content=[
+    [-1, 0],
+    [0, -1],
+    [0, 1],
+    [1, 0],
+    [1, 1],
+    [-1, -2],
+  ])
+  @json.inspect(knn.search_by((1, 1), 4), content=[
+    [1, 1],
+    [0, 1],
+    [1, 0],
+    [2, 2],
+  ])
 }
