@@ -1,20 +1,20 @@
 ///|
-pub struct KDTree {
+pub struct KDTree[Point] {
   point : Point
   partition_axis : Int
-  left : KDTree?
-  right : KDTree?
+  left : KDTree[Point]?
+  right : KDTree[Point]?
 }
 
 ///|
 
 ///|
-pub fn KDTree::is_leaf(self : KDTree) -> Bool {
+pub fn[T] KDTree::is_leaf(self : KDTree[T]) -> Bool {
   return self.left is None && self.right is None && self.partition_axis == -1
 }
 
 ///|
-pub fn KDTree::singleton(point : Point) -> KDTree {
+pub fn[T] KDTree::singleton(point : T) -> KDTree[T] {
   return KDTree::{
     point,
     partition_axis: -1, // No partition axis for a singleton
@@ -24,9 +24,9 @@ pub fn KDTree::singleton(point : Point) -> KDTree {
 }
 
 ///|
-fn[T] KDTree::partition_by(
+fn[T, K : Eq + Compare] KDTree::partition_by(
   arr : Array[T],
-  get_key : (T) -> Int,
+  get_key : (T) -> K,
   start~ : Int,
   end~ : Int,
 ) -> Int {
@@ -46,12 +46,12 @@ fn[T] KDTree::partition_by(
 
 ///|
 /// select the k-th smallest element in the arr
-fn[T] KDTree::quickselect_by(
+fn[T, K : Eq + Compare] KDTree::quickselect_by(
   arr : Array[T],
   start~ : Int,
   end~ : Int,
   k : Int,
-  get_key : (T) -> Int,
+  get_key : (T) -> K,
 ) -> T {
   if end - start == 1 {
     return arr[start]
@@ -102,9 +102,9 @@ test "select k-th smallest element" {
 }
 
 ///|
-fn[T] KDTree::split_by_midvalue(
+fn[T, K : Eq + Compare] KDTree::split_by_midvalue(
   arr : Array[T],
-  get_key : (T) -> Int,
+  get_key : (T) -> K,
   start~ : Int,
   end~ : Int,
 ) -> ((Int, Int), T, (Int, Int)) {
@@ -190,15 +190,15 @@ test "split by midvalue 5" {
 }
 
 ///|
-pub fn KDTree::from(points : Array[Point], k : Int) -> KDTree {
-  fn go(points : Array[Point], depth : Int, start : Int, end : Int) -> KDTree? {
+pub fn[T : Point] KDTree::from(points : Array[T], k : Int) -> KDTree[T] {
+  fn go(points : Array[T], depth : Int, start : Int, end : Int) -> KDTree[T]? {
     if end - start == 0 {
       return None
     } else {
       let axis = depth % k
       let (left, point, right) = KDTree::split_by_midvalue(
         points,
-        p => p[axis],
+        p => p.to_fixedarray()[axis],
         start~,
         end~,
       )
