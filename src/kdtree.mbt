@@ -24,7 +24,7 @@ pub fn[T] KDTree::singleton(point : T) -> KDTree[T] {
 }
 
 ///|
-fn[T, K : Eq + Compare] KDTree::partition_by(
+fn[T, K : Compare] KDTree::partition_by(
   arr : Array[T],
   get_key : (T) -> K,
   start~ : Int,

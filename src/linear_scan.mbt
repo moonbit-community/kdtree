@@ -90,20 +90,20 @@ test {
     (-2, -3),
   ]
   let knn = LinearScanKNN::new(2, points~)
-  @json.inspect(knn.search_by((0, 0), 4), content=[
+  json_inspect(knn.search_by((0, 0), 4), content=[
     [-1, 0],
     [0, -1],
     [0, 1],
     [1, 0],
   ])
-  @json.inspect(knn.search_by((0, 0), 5), content=[
+  json_inspect(knn.search_by((0, 0), 5), content=[
     [-1, 0],
     [0, -1],
     [0, 1],
     [1, 0],
     [1, 1],
   ])
-  @json.inspect(knn.search_by((0, 0), 6), content=[
+  json_inspect(knn.search_by((0, 0), 6), content=[
     [-1, 0],
     [0, -1],
     [0, 1],
@@ -111,7 +111,7 @@ test {
     [1, 1],
     [-1, -2],
   ])
-  @json.inspect(knn.search_by((1, 1), 4), content=[
+  json_inspect(knn.search_by((1, 1), 4), content=[
     [1, 1],
     [0, 1],
     [1, 0],
