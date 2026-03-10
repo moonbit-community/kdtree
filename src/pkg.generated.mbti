@@ -1,26 +1,35 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "myfreess/kdtree"
 
-import(
-  "moonbitlang/core/immut/array"
-)
-
 // Values
 
 // Errors
 
 // Types and methods
-pub struct KDTree {
-  point : @array.T[Int]
+pub struct KDTree[Point] {
+  point : Point
   partition_axis : Int
-  left : KDTree?
-  right : KDTree?
+  left : KDTree[Point]?
+  right : KDTree[Point]?
 }
-fn KDTree::from(Array[@array.T[Int]], Int) -> Self
-fn KDTree::is_leaf(Self) -> Bool
-fn KDTree::singleton(@array.T[Int]) -> Self
+pub fn[T : Point] KDTree::from(Array[T], Int) -> Self[T]
+pub fn[T] KDTree::is_leaf(Self[T]) -> Bool
+pub fn[T] KDTree::singleton(T) -> Self[T]
 
 // Type aliases
 
 // Traits
+pub trait Point {
+  to_fixedarray(Self) -> FixedArray[Int]
+}
+pub impl Point for (Int, Int)
+pub impl Point for (Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int)
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int)
 

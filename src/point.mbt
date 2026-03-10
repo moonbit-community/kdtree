@@ -93,8 +93,3 @@ pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with 
     self.10,
   ]
 }
-
-///|
-pub impl Point for FixedArray[Int] with to_fixedarray(self) {
-  return self
-}
