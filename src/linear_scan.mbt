@@ -55,7 +55,7 @@ fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
 
   // Extract points from heap and return them
   let result = Array::new()
-  while not(heap.is_empty()) {
+  while !heap.is_empty() {
     match heap.pop() {
       Some((_, p)) => result.push(p)
       None => break
