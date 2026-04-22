@@ -13,11 +13,6 @@ fn[T] LinearScanKNN::new(
 }
 
 ///|
-fn[T] LinearScanKNN::add(self : LinearScanKNN[T], point : T) -> Unit {
-  self.points.push(point)
-}
-
-///|
 fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
   self : LinearScanKNN[T],
   point : T,
