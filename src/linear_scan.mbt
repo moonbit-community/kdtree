@@ -33,7 +33,7 @@ fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
 
   // Use a max-heap to maintain the k closest points
   // The heap stores (distance, point) pairs
-  let heap = @priority_queue.new()
+  let heap = @priority_queue.PriorityQueue([])
   for candidate_point in self.points {
     let distance = dist(point, candidate_point)
     if heap.length() < n {
