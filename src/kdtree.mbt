@@ -128,9 +128,19 @@ test "split by midvalue 1" {
     start=0,
     end=arr.length(),
   )
-  debug_inspect(arr[left.0:left.1], content="[1, 2]")
+  debug_inspect(
+    arr[left.0:left.1],
+    content=(
+      #|<ArrayView: [1, 2]>
+    ),
+  )
   inspect(mid, content="3")
-  debug_inspect(arr[right.0:right.1], content="[4, 5]")
+  debug_inspect(
+    arr[right.0:right.1],
+    content=(
+      #|<ArrayView: [4, 5]>
+    ),
+  )
 }
 
 ///|
@@ -142,9 +152,19 @@ test "split by midvalue 2" {
     start=0,
     end=arr2.length(),
   )
-  debug_inspect(arr2[left2.0:left2.1], content="[]")
+  debug_inspect(
+    arr2[left2.0:left2.1],
+    content=(
+      #|<ArrayView: []>
+    ),
+  )
   inspect(mid2, content="1")
-  debug_inspect(arr2[right2.0:right2.1], content="[]")
+  debug_inspect(
+    arr2[right2.0:right2.1],
+    content=(
+      #|<ArrayView: []>
+    ),
+  )
 }
 
 ///|
@@ -156,9 +176,19 @@ test "split by midvalue 3" {
     start=0,
     end=arr3.length(),
   )
-  debug_inspect(arr3[left3.0:left3.1], content="[1, 2]")
+  debug_inspect(
+    arr3[left3.0:left3.1],
+    content=(
+      #|<ArrayView: [1, 2]>
+    ),
+  )
   inspect(mid3, content="2")
-  debug_inspect(arr3[right3.0:right3.1], content="[3, 4]")
+  debug_inspect(
+    arr3[right3.0:right3.1],
+    content=(
+      #|<ArrayView: [3, 4]>
+    ),
+  )
 }
 
 ///|
@@ -170,9 +200,19 @@ test "split by midvalue 4" {
     start=0,
     end=arr4.length(),
   )
-  debug_inspect(arr4[left4.0:left4.1], content="[1, 2]")
+  debug_inspect(
+    arr4[left4.0:left4.1],
+    content=(
+      #|<ArrayView: [1, 2]>
+    ),
+  )
   inspect(mid4, content="3")
-  debug_inspect(arr4[right4.0:right4.1], content="[3, 4]")
+  debug_inspect(
+    arr4[right4.0:right4.1],
+    content=(
+      #|<ArrayView: [3, 4]>
+    ),
+  )
 }
 
 ///|
@@ -184,9 +224,19 @@ test "split by midvalue 5" {
     start=0,
     end=arr5.length(),
   )
-  debug_inspect(arr5[left5.0:left5.1], content="[1, 2, 3]")
+  debug_inspect(
+    arr5[left5.0:left5.1],
+    content=(
+      #|<ArrayView: [1, 2, 3]>
+    ),
+  )
   inspect(mid5, content="4")
-  debug_inspect(arr5[right5.0:right5.1], content="[5, 6]")
+  debug_inspect(
+    arr5[right5.0:right5.1],
+    content=(
+      #|<ArrayView: [5, 6]>
+    ),
+  )
 }
 
 ///|
