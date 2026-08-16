@@ -46,7 +46,7 @@ fn[T, K : Compare] KDTree::partition_by(
 
 ///|
 /// select the k-th smallest element in the arr
-fn[T, K : Eq + Compare] KDTree::quickselect_by(
+fn[T, K : Compare] KDTree::quickselect_by(
   arr : Array[T],
   start~ : Int,
   end~ : Int,
@@ -102,7 +102,7 @@ test "select k-th smallest element" {
 }
 
 ///|
-fn[T, K : Eq + Compare] KDTree::split_by_midvalue(
+fn[T, K : Compare] KDTree::split_by_midvalue(
   arr : Array[T],
   get_key : (T) -> K,
   start~ : Int,
@@ -258,6 +258,12 @@ pub fn[T : Point] KDTree::from(points : Array[T], k : Int) -> KDTree[T] {
     }
   }
 
-  guard go(points, 0, 0, points.length()) is Some(tree)
+  guard! go(points, 0, 0, points.length()) is Some(tree)
   return tree
+}
+
+///|
+test "panic building a KDTree from no points" {
+  let points : Array[(Int, Int)] = []
+  ignore(KDTree::from(points, 2))
 }
