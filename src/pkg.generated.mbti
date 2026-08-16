@@ -20,7 +20,7 @@ pub fn[T] KDTree::singleton(T) -> Self[T]
 
 // Traits
 pub trait Point {
-  to_fixedarray(Self) -> FixedArray[Int]
+  fn to_fixedarray(Self) -> FixedArray[Int]
 }
 pub impl Point for (Int, Int)
 pub impl Point for (Int, Int, Int)
@@ -32,4 +32,3 @@ pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int)
 pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int)
 pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int)
 pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int)
-

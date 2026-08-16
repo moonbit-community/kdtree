@@ -1,47 +1,49 @@
 ///|
 pub trait Point {
-  to_fixedarray(Self) -> FixedArray[Int]
+  fn to_fixedarray(Self) -> FixedArray[Int]
 }
 
 ///|
-pub impl Point for (Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int) with fn to_fixedarray(self) {
   return [self.0, self.1]
 }
 
 ///|
-pub impl Point for (Int, Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int, Int) with fn to_fixedarray(self) {
   return [self.0, self.1, self.2]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int, Int, Int) with fn to_fixedarray(self) {
   return [self.0, self.1, self.2, self.3]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int, Int, Int, Int) with fn to_fixedarray(self) {
   return [self.0, self.1, self.2, self.3, self.4]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int, Int, Int, Int, Int) with fn to_fixedarray(self) {
   return [self.0, self.1, self.2, self.3, self.4, self.5]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int, Int) with to_fixedarray(self) {
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int) with fn to_fixedarray(
+  self,
+) {
   return [self.0, self.1, self.2, self.3, self.4, self.5, self.6]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int) with to_fixedarray(
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int) with fn to_fixedarray(
   self,
 ) {
   return [self.0, self.1, self.2, self.3, self.4, self.5, self.6, self.7]
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int) with to_fixedarray(
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int) with fn to_fixedarray(
   self,
 ) {
   return [
@@ -58,7 +60,7 @@ pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int) with to_fixedar
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with to_fixedarray(
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with fn to_fixedarray(
   self,
 ) {
   return [
@@ -76,7 +78,7 @@ pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with to_fi
 }
 
 ///|
-pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with to_fixedarray(
+pub impl Point for (Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int) with fn to_fixedarray(
   self,
 ) {
   return [
