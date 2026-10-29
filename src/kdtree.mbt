@@ -1,7 +1,7 @@
 ///|
 pub struct KDTree[Point] {
   point : Point
-  partition_axis : Int
+  partition_axis : Int32
   left : KDTree[Point]?
   right : KDTree[Point]?
 }
@@ -27,9 +27,9 @@ pub fn[T] KDTree::singleton(point : T) -> KDTree[T] {
 fn[T, K : Compare] KDTree::partition_by(
   arr : Array[T],
   get_key : (T) -> K,
-  start~ : Int,
-  end~ : Int,
-) -> Int {
+  start~ : Int32,
+  end~ : Int32,
+) -> Int32 {
   let lo = start
   let hi = end - 1
   let pivot = get_key(arr[hi])
@@ -48,9 +48,9 @@ fn[T, K : Compare] KDTree::partition_by(
 /// select the k-th smallest element in the arr
 fn[T, K : Eq + Compare] KDTree::quickselect_by(
   arr : Array[T],
-  start~ : Int,
-  end~ : Int,
-  k : Int,
+  start~ : Int32,
+  end~ : Int32,
+  k : Int32,
   get_key : (T) -> K,
 ) -> T {
   if end - start == 1 {
@@ -105,9 +105,9 @@ test "select k-th smallest element" {
 fn[T, K : Eq + Compare] KDTree::split_by_midvalue(
   arr : Array[T],
   get_key : (T) -> K,
-  start~ : Int,
-  end~ : Int,
-) -> ((Int, Int), T, (Int, Int)) {
+  start~ : Int32,
+  end~ : Int32,
+) -> ((Int32, Int32), T, (Int32, Int32)) {
   // TODO: BFPRT https://en.wikipedia.org/wiki/Median_of_medians
   let mid = (end - start) / 2
   ignore(KDTree::quickselect_by(arr, mid, get_key, start~, end~))
@@ -240,8 +240,13 @@ test "split by midvalue 5" {
 }
 
 ///|
-pub fn[T : Point] KDTree::from(points : Array[T], k : Int) -> KDTree[T] {
-  fn go(points : Array[T], depth : Int, start : Int, end : Int) -> KDTree[T]? {
+pub fn[T : Point] KDTree::from(points : Array[T], k : Int32) -> KDTree[T] {
+  fn go(
+    points : Array[T],
+    depth : Int32,
+    start : Int32,
+    end : Int32,
+  ) -> KDTree[T]? {
     if end - start == 0 {
       return None
     } else {
@@ -254,7 +259,7 @@ pub fn[T : Point] KDTree::from(points : Array[T], k : Int) -> KDTree[T] {
       )
       let left = go(points, depth + 1, left.0, left.1)
       let right = go(points, depth + 1, right.0, right.1)
-      return Some(KDTree::{ point, partition_axis: axis, left, right })
+      return Some(KDTree::{ point, partition_axis: axis, left, right, })
     }
   }
 

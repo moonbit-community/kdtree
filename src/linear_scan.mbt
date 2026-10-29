@@ -1,22 +1,22 @@
 ///|
 priv struct LinearScanKNN[Point] {
-  dimension : Int
+  dimension : Int32
   points : Array[Point]
 }
 
 ///|
 fn[T] LinearScanKNN::new(
-  dimension : Int,
-  points? : Array[T] = [],
+  dimension : Int32,
+  points~ : Array[T] = [],
 ) -> LinearScanKNN[T] {
-  LinearScanKNN::{ dimension, points }
+  LinearScanKNN::{ dimension, points, }
 }
 
 ///|
 fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
   self : LinearScanKNN[T],
   point : T,
-  n : Int,
+  n : Int32,
 ) -> Array[T] {
   // squared Euclidean distance
   fn dist(x : T, y : T) -> UInt64 {
@@ -54,7 +54,7 @@ fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
   }
 
   // Extract points from heap and return them
-  let result = Array::new()
+  let result = Array()
   while !heap.is_empty() {
     match heap.pop() {
       Some((_, p)) => result.push(p)
