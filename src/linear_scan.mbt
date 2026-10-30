@@ -13,15 +13,15 @@ fn[T] LinearScanKNN::new(
 }
 
 ///|
-fn[T : Point + Eq + Compare] LinearScanKNN::search_by(
+fn[T : Point + Compare] LinearScanKNN::search_by(
   self : LinearScanKNN[T],
   point : T,
   n : Int32,
 ) -> Array[T] {
   // squared Euclidean distance
   fn dist(x : T, y : T) -> UInt64 {
-    let x = x.to_fixedarray()
-    let y = y.to_fixedarray()
+    let x = Point::to_fixedarray(x)
+    let y = Point::to_fixedarray(y)
     let mut sum = 0UL
     for i in 0..<self.dimension {
       // avoid overflow
